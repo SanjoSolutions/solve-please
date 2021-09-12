@@ -27,7 +27,7 @@ function App() {
     <div>
       <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light mb-2">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">Solve please</a>
+          <a className="navbar-brand" href="/">Solve please</a>
           <button
             className="navbar-toggler"
             type="button"

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState, useCallback } from 'react'
 import './SolutionRequest.css'
 import { requestASolutionToo } from './domain/requestSolutionToo.js'
 import { initializeApp } from './firebase/initializeApp.js'
@@ -88,7 +88,7 @@ export function SolutionRequest({solutionRequest}) {
         <p>
           {body}
         </p>
-        <a href="#" className="card-link">Details</a>
+        {/*<a href="#" className="card-link">Details</a>*/}
         <div className="float-end">
           <button className="btn btn-light propose-solution mb-2 mb-md-0 me-2">
             Propose solution
