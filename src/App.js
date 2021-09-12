@@ -9,8 +9,11 @@ import './App.css'
 import { SolutionRequests } from './SolutionRequests.js'
 import { RequestSolution } from './RequestSolution.js'
 import classNames from 'classnames'
+import { useUser } from './useUser.js'
 
 function App() {
+  const user = useUser()
+
   const location = useLocation()
 
   const isCurrentLocationPath = useCallback(
@@ -78,7 +81,7 @@ function App() {
         </div>
       </nav>
       <div className="container">
-        <div id="firebaseui-auth-container"/>
+        {!user && <div id="firebaseui-auth-container"/>}
 
         <Switch>
           <Route exact path="/">

@@ -1,7 +1,8 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import './SolutionRequest.css'
+import { requestASolutionToo } from './domain/requestSolutionToo.js'
 import { initializeApp } from './firebase/initializeApp.js'
-import { useUser } from './useUser.js'
+import { useUserSolutionRequests } from './useUserSolutionRequests.js'
 import firebase from 'firebase'
 import 'firebase/firestore'
 
@@ -23,32 +24,39 @@ export function SolutionRequest({solutionRequest}) {
     requestData.numberOfRequesters
   )
 
-  const user = useUser()
-  const [userRequestIds, setUserRequestIds] = useState(
-    new Set(user ? user.data().requests : [])
+  const userSolutionRequests = useUserSolutionRequests()
+  const userSolutionRequestIds = new Set(
+    userSolutionRequests.map(userSolutionRequest => userSolutionRequest.id)
   )
+  const [
+    isAlsoLookingForASolutionForThisProblemRequestInProgress,
+    setIsAlsoLookingForASolutionForThisProblemRequestInProgress
+  ] = useState(false)
 
   const onAlsoLookingForASolutionForThisProblem = useCallback(
       async function onAlsoLookingForASolutionForThisProblem() {
-        const newNumberOfRequesters = numberOfRequesters + 1
+        setIsAlsoLookingForASolutionForThisProblemRequestInProgress(true)
+        const newNumberOfRequesters = requestASolutionToo(numberOfRequesters)
         setNumberOfRequesters(newNumberOfRequesters)
-        setUserRequestIds(new Set([...userRequestIds, id]))
 
-        const solutionRequestReference = database.collection('solutionRequests').doc(id)
+        const solutionRequestReference = database
+          .collection('solutionRequests')
+          .doc(id)
         try {
           const newNumberOfRequestersFromDatabase = await database.runTransaction(
             async (transaction) => {
               const solutionRequest = await transaction.get(solutionRequestReference)
               if (solutionRequest.exists) {
-                const numberOfRequesters =
-                  (solutionRequest.data().numberOfRequesters ?? 0) + 1
+                const newNumberOfRequesters2 = requestASolutionToo(
+                  solutionRequest.data().numberOfRequesters ?? 0
+                )
                 transaction.update(
                   solutionRequestReference,
                   {
-                    numberOfRequesters,
+                    numberOfRequesters: newNumberOfRequesters2,
                   }
                 )
-                return numberOfRequesters
+                return newNumberOfRequesters2
               }
             },
           )
@@ -57,12 +65,13 @@ export function SolutionRequest({solutionRequest}) {
           }
         } catch (error) {
           console.error(error)
+        } finally {
+          setIsAlsoLookingForASolutionForThisProblemRequestInProgress(false)
         }
     },
     [
       id,
-      numberOfRequesters,
-      userRequestIds
+      numberOfRequesters
     ]
   )
 
@@ -86,7 +95,7 @@ export function SolutionRequest({solutionRequest}) {
           </button>{/*
         */}<button
             className="btn btn-light also-looking-for-a-solution-for-this-problem"
-            disabled={userRequestIds.has(id)}
+            disabled={isAlsoLookingForASolutionForThisProblemRequestInProgress || userSolutionRequestIds.has(id)}
             onClick={onAlsoLookingForASolutionForThisProblem}
           >
               Also looking for a solution for this problem

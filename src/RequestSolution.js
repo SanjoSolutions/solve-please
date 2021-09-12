@@ -14,8 +14,8 @@ export class RequestSolution extends React.Component {
   constructor(props) {
     super(props)
     this.onSubmit = this.onSubmit.bind(this)
-    this.summaryRef = React.createRef()
-    this.detailsRef = React.createRef()
+    this.summaryRef = React.createRef(null)
+    this.detailsRef = React.createRef(null)
   }
 
   async onSubmit(event) {
@@ -27,7 +27,7 @@ export class RequestSolution extends React.Component {
     const requestRef = await database.collection('solutionRequests').add({
       summary,
       details,
-      numberOfRequesters: 1
+      numberOfRequesters: 1,
     })
     const userId = firebase.auth().currentUser?.uid
     const requestsRef = database
@@ -43,11 +43,11 @@ export class RequestSolution extends React.Component {
         <p>
           Please describe the problem that you'd like to be solved.
         </p>
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={ this.onSubmit }>
           <div className="mb-3">
             <label htmlFor="summary" className="form-label">Summary</label>
             <textarea
-              ref={this.summaryRef}
+              ref={ this.summaryRef }
               className="form-control"
               name="summary"
               rows={ 3 }
@@ -58,7 +58,7 @@ export class RequestSolution extends React.Component {
           <div className="mb-3">
             <label htmlFor="details" className="form-label">Details</label>
             <textarea
-              ref={this.detailsRef}
+              ref={ this.detailsRef }
               className="form-control"
               name="details"
               rows={ 6 }
