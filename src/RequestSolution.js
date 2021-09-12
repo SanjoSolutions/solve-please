@@ -2,6 +2,7 @@ import React from 'react'
 import firebase from 'firebase'
 import 'firebase/firestore'
 import { initializeApp } from './firebase/initializeApp.js'
+import { withRouter } from 'react-router'
 
 initializeApp()
 
@@ -10,7 +11,7 @@ if (window.location.hostname === 'localhost') {
   database.useEmulator('localhost', 8080)
 }
 
-export class RequestSolution extends React.Component {
+class RequestSolutionBase extends React.Component {
   constructor(props) {
     super(props)
     this.onSubmit = this.onSubmit.bind(this)
@@ -34,6 +35,7 @@ export class RequestSolution extends React.Component {
       .collection('users').doc(userId)
       .collection('requests')
     await requestsRef.doc(requestRef.id).set({})
+    this.props.history.push('/')
   }
 
   render() {
@@ -73,3 +75,5 @@ export class RequestSolution extends React.Component {
     )
   }
 }
+
+export const RequestSolution = withRouter(RequestSolutionBase)
