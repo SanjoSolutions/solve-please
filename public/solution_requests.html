@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Solve please</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+    crossorigin="anonymous"
+  >
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/5.0.0/firebase-ui-auth.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<template id="solutionRequest">
+  <div class="card mb-2">
+    <div class="card-body">
+      <span
+        class="number-of-requesters float-end"
+        title="Number of people looking for a solution for this problem"
+      >0</span>
+      <h5 class="card-title">Please solve the problem that</h5>
+      <p>
+        ...
+      </p>
+      <a href="#" class="card-link">Details</a>
+      <div class="float-end">
+        <button class="btn btn-light propose-solution mb-2 mb-md-0 me-2">Propose solution</button><!--
+        --><button class="btn btn-light also-looking-for-a-solution-for-this-problem">Also looking for a solution
+          for this problem
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light mb-2">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Solve please</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="solution_requests.html">Solution requests</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../index.html">Request a solution</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search for solution requests" aria-label="Search">
+        <button class="btn btn-outline-dark" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div id="firebaseui-auth-container"></div>
+
+  <div id="solutionRequests">
+    <h1 class="h2">Solution requests</h1>
+  </div>
+</div>
+
+<script type="module" src="common.js"></script>
+<script type="module" src="solution_requests.js"></script>
+</body>
+</html>

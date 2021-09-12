@@ -1,0 +1,4 @@
+.idea
+/public/*.js
+node_modules
+ui-debug.log
