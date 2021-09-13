@@ -1,6 +1,6 @@
 import React from 'react'
-import firebase from 'firebase/app'
-import 'firebase/firestore'
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/firestore'
 import { getDatabase } from './firebase/getDatabase.js'
 import { initializeApp } from './firebase/initializeApp.js'
 import { withRouter } from 'react-router'

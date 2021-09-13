@@ -8,8 +8,8 @@ import App from './App'
 import { initializeApp } from './firebase/initializeApp.js'
 import { isDevelopment } from './isDevelopment.js'
 import reportWebVitals from './reportWebVitals'
-import firebase from 'firebase/app'
-import 'firebase/auth'
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/auth'
 
 initializeApp()
 
