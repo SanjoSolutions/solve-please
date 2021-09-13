@@ -86,9 +86,10 @@ export function SolutionRequest({solutionRequest}) {
         </p>
         {/*<a href="#" className="card-link">Details</a>*/}
         <div className="float-end">
+          {/*
           <button className="btn btn-light propose-solution mb-2 mb-md-0 me-2">
             Propose solution
-          </button>{/*
+          </button>*/}{/*
         */}<button
             className="btn btn-light also-looking-for-a-solution-for-this-problem"
             disabled={isAlsoLookingForASolutionForThisProblemRequestInProgress || userSolutionRequestIds.has(id)}

@@ -12,3 +12,4 @@
 * ~~[ ] Show currently logged in user~~
 * [X] Disable "Submit request" button while the submission is in progress.
 * [X] Search function
+* [ ] Propose solution functionality
