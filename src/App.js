@@ -33,7 +33,7 @@ function App() {
   )
 
   return (
-    <div>
+    <div className="d-flex flex-column flex-grow-1">
       <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light mb-2">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">Solve please</a>
@@ -87,7 +87,7 @@ function App() {
           </div>
         </div>
       </nav>
-      <div className="container">
+      <div className="container flex-grow-1 d-flex flex-column">
         <Switch>
           <Route exact path="/">
             <SolutionRequests/>

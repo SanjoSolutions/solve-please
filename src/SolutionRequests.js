@@ -8,16 +8,22 @@ export function SolutionRequests() {
   const solutionRequests = useSolutionRequests(searchTerm)
 
   return (
-    <div id="solutionRequests">
+    <div className="flex-grow-1 d-flex flex-column">
       <h1 className="h2">Solution requests</h1>
 
       {
-        solutionRequests.map(
-          solutionRequest => <SolutionRequest
-            key={solutionRequest.id}
-            solutionRequest={solutionRequest}
-          />
-        )
+        solutionRequests ?
+          solutionRequests.map(
+            solutionRequest => <SolutionRequest
+              key={ solutionRequest.id }
+              solutionRequest={ solutionRequest }
+            />,
+          ) :
+          <div class="flex-grow-1 d-flex flex-column align-items-center justify-content-center">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
       }
     </div>
   )
