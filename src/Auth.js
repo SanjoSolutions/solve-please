@@ -1,14 +1,12 @@
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'
 import * as firebaseui from 'firebaseui'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback } from 'react'
 import './Auth.css'
 import { useHistory } from 'react-router-dom'
-import { useUser } from './useUser.js'
 
 export function Auth() {
   const history = useHistory()
-  const user = useUser()
 
   const onRendered = useCallback(
     node => {
