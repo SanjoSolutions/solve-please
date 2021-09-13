@@ -3,7 +3,7 @@ import once from 'lodash.once'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCcWA6ATqEHbxfK3LfHpwvIukjdIKeUatM',
-  authDomain: window.location.hostname === 'localhost' ?
+  authDomain: isDevelopment() ?
     'localhost' :
     'solve-please.firebaseapp.com',
   projectId: 'solve-please',

@@ -6,6 +6,7 @@ import {
 import './index.css'
 import App from './App'
 import { initializeApp } from './firebase/initializeApp.js'
+import { isDevelopment } from './isDevelopment.js'
 import reportWebVitals from './reportWebVitals'
 import firebase from 'firebase/app'
 import 'firebase/auth'
@@ -15,7 +16,7 @@ initializeApp()
 
 const auth = firebase.auth()
 window.auth = auth
-if (window.location.hostname === 'localhost') {
+if (isDevelopment()) {
   auth.useEmulator('http://localhost:9099')
 }
 
