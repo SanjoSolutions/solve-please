@@ -1,10 +1,15 @@
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'
 import * as firebaseui from 'firebaseui'
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import './Auth.css'
+import { useHistory } from 'react-router-dom'
+import { useUser } from './useUser.js'
 
 export function Auth() {
+  const history = useHistory()
+  const user = useUser()
+
   const onRendered = useCallback(
     node => {
       if (node) {
@@ -16,14 +21,10 @@ export function Auth() {
         ui.start(node, {
           callbacks: {
             signInSuccessWithAuthResult(authResult, redirectUrl) {
-              // User successfully signed in.
-              // Return type determines whether we continue the redirect automatically
-              // or whether we leave that to developer to handle.
+              const redirectToPath = history.location?.state?.redirectToAfterLogin ?? ''
+              history.replace(redirectToPath)
               return false
-            },
-            uiShown() {
-
-            },
+            }
           },
           signInFlow: 'popup',
           signInOptions: [
@@ -37,7 +38,7 @@ export function Auth() {
         })
       }
     },
-    []
+    [history]
   )
 
 

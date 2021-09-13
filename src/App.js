@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import React, { useCallback, useState } from 'react'
 import { Link, Route, Switch, useLocation } from 'react-router-dom'
 import { Auth } from './Auth.js'
+import { LogIn } from './LogIn.js'
 import { LogOut } from './LogOut.js'
 import { RequestSolution } from './RequestSolution.js'
 import { Search } from './Search.js'
@@ -80,23 +81,22 @@ function App() {
               </li>
             </ul>
             <Search />
-            {user && <LogOut />}
+            {user ? <LogOut /> : <LogIn />}
           </div>
         </div>
       </nav>
       <div className="container">
-        {
-          user ?
-            <Switch>
-              <Route exact path="/">
-                <SolutionRequests/>
-              </Route>
-              <Route exact path="/request-solution">
-                <RequestSolution/>
-              </Route>
-            </Switch> :
+        <Switch>
+          <Route exact path="/">
+            <SolutionRequests/>
+          </Route>
+          <Route exact path="/log-in">
             <Auth/>
-        }
+          </Route>
+          <Route exact path="/request-solution">
+            <RequestSolution/>
+          </Route>
+        </Switch>
       </div>
     </div>
   )
