@@ -1,6 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import { useState, useEffect } from 'react'
+import { getDatabase } from './firebase/getDatabase.js'
 
 export function useRequests() {
   const [requests, setRequests] = useState([])
@@ -8,7 +9,7 @@ export function useRequests() {
   useEffect(
     () => {
       async function retrieveSolutionRequests() {
-        const database = firebase.firestore()
+        const database = getDatabase()
         const solutionRequests = await database.collection('solutionRequests')
           .get(
             database.collection('solutionRequests')

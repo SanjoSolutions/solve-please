@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import './SolutionRequest.css'
 import { requestASolutionToo } from './domain/requestSolutionToo.js'
+import { getDatabase } from './firebase/getDatabase.js'
 import { initializeApp } from './firebase/initializeApp.js'
 import { useUserSolutionRequests } from './useUserSolutionRequests.js'
 import firebase from 'firebase/app'
@@ -8,10 +9,7 @@ import 'firebase/firestore'
 
 initializeApp()
 
-const database = firebase.firestore()
-if (window.location.hostname === 'localhost') {
-  database.useEmulator('localhost', 8080)
-}
+const database = getDatabase()
 
 export function SolutionRequest({solutionRequest}) {
   const id = solutionRequest.id

@@ -1,15 +1,13 @@
 import React from 'react'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
+import { getDatabase } from './firebase/getDatabase.js'
 import { initializeApp } from './firebase/initializeApp.js'
 import { withRouter } from 'react-router'
 
 initializeApp()
 
-const database = firebase.firestore()
-if (window.location.hostname === 'localhost') {
-  database.useEmulator('localhost', 8080)
-}
+const database = getDatabase()
 
 class RequestSolutionBase extends React.Component {
   constructor(props) {

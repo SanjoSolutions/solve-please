@@ -1,6 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import { useState, useEffect } from 'react'
+import { getDatabase } from './firebase/getDatabase.js'
 
 export function useUserSolutionRequests() {
   const [userSolutionRequests, setUserSolutionRequests] = useState([])
@@ -13,7 +14,7 @@ export function useUserSolutionRequests() {
       firebase.auth().onAuthStateChanged(async (user) => {
         if (!hasBeenUnmounted && user) {
           const userId = user.uid
-          const database = firebase.firestore()
+          const database = getDatabase()
           const userSolutionRequestsRef = database.collection('users')
             .doc(userId)
             .collection('requests')
