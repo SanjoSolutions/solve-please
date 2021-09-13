@@ -10,12 +10,10 @@ import { isDevelopment } from './isDevelopment.js'
 import reportWebVitals from './reportWebVitals'
 import firebase from 'firebase/app'
 import 'firebase/auth'
-import * as firebaseui from 'firebaseui'
 
 initializeApp()
 
 const auth = firebase.auth()
-window.auth = auth
 if (isDevelopment()) {
   auth.useEmulator('http://localhost:9099')
 }
@@ -28,32 +26,6 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 )
-
-const ui = new firebaseui.auth.AuthUI(auth)
-
-const authContainerId = 'firebaseui-auth-container'
-ui.start(`#${ authContainerId }`, {
-  callbacks: {
-    signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-      // User successfully signed in.
-      // Return type determines whether we continue the redirect automatically
-      // or whether we leave that to developer to handle.
-      return false
-    },
-    uiShown: function () {
-
-    },
-  },
-  signInFlow: 'popup',
-  signInOptions: [
-    {
-      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      requireDisplayName: false,
-    },
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-  ],
-})
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

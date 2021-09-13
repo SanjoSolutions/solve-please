@@ -5,7 +5,7 @@ import {
   Link,
   useLocation
 } from 'react-router-dom'
-import './App.css'
+import { Auth } from './Auth.js'
 import { SolutionRequests } from './SolutionRequests.js'
 import { RequestSolution } from './RequestSolution.js'
 import classNames from 'classnames'
@@ -95,16 +95,18 @@ function App() {
         </div>
       </nav>
       <div className="container">
-        {!user && <div id="firebaseui-auth-container"/>}
-
-        <Switch>
-          <Route exact path="/">
-            <SolutionRequests />
-          </Route>
-          <Route exact path="/request-solution">
-            <RequestSolution />
-          </Route>
-        </Switch>
+        {
+          user ?
+          <Switch>
+            <Route exact path="/">
+              <SolutionRequests />
+            </Route>
+            <Route exact path="/request-solution">
+              <RequestSolution />
+            </Route>
+          </Switch> :
+          <Auth />
+        }
       </div>
     </div>
   )

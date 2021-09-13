@@ -1,4 +1,4 @@
-#firebaseui-auth-container {
+.auth {
   display: flex;
   z-index: 100000;
   background: white;
