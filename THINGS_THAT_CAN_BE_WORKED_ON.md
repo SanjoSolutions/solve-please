@@ -11,4 +11,4 @@
 * [ ] Log out
 * [ ] Show currently logged in user
 * [ ] Disable "Submit request" button while the submission is in progress.
-* [ ] Search function
+* [X] Search function

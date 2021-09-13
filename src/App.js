@@ -1,14 +1,10 @@
-import React, { useCallback, useState } from 'react'
-import {
-  Switch,
-  Route,
-  Link,
-  useLocation
-} from 'react-router-dom'
-import { Auth } from './Auth.js'
-import { SolutionRequests } from './SolutionRequests.js'
-import { RequestSolution } from './RequestSolution.js'
 import classNames from 'classnames'
+import React, { useCallback, useState } from 'react'
+import { Link, Route, Switch, useLocation } from 'react-router-dom'
+import { Auth } from './Auth.js'
+import { RequestSolution } from './RequestSolution.js'
+import { Search } from './Search.js'
+import { SolutionRequests } from './SolutionRequests.js'
 import { useUser } from './useUser.js'
 
 function App() {
@@ -38,7 +34,7 @@ function App() {
         <div className="container-fluid">
           <a className="navbar-brand" href="/">Solve please</a>
           <button
-            onClick={toggleCollapse}
+            onClick={ toggleCollapse }
             className="navbar-toggler"
             type="button"
             aria-controls="navbarSupportedContent"
@@ -47,11 +43,13 @@ function App() {
           >
             <span className="navbar-toggler-icon"/>
           </button>
-          <div className={classNames({
-            'collapse': !isOpen,
-            'show': isOpen,
-            'navbar-collapse': true
-          })}>
+          <div
+            className={ classNames({
+              'collapse': !isOpen,
+              'show': isOpen,
+              'navbar-collapse': true
+            }) }
+          >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link
@@ -80,32 +78,22 @@ function App() {
                 </Link>
               </li>
             </ul>
-            <form className="d-flex">
-              <input
-                className="form-control me-2"
-                type="search"
-                title="Search for solution requests"
-                placeholder="Search for solution requests"
-                aria-label="Search"
-                style={{minWidth: '24rem'}}
-              />
-              <button className="btn btn-outline-dark" type="submit">Search</button>
-            </form>
+            <Search />
           </div>
         </div>
       </nav>
       <div className="container">
         {
           user ?
-          <Switch>
-            <Route exact path="/">
-              <SolutionRequests />
-            </Route>
-            <Route exact path="/request-solution">
-              <RequestSolution />
-            </Route>
-          </Switch> :
-          <Auth />
+            <Switch>
+              <Route exact path="/">
+                <SolutionRequests/>
+              </Route>
+              <Route exact path="/request-solution">
+                <RequestSolution/>
+              </Route>
+            </Switch> :
+            <Auth/>
         }
       </div>
     </div>

@@ -1,9 +1,11 @@
 import React from 'react'
-import { useRequests } from './useRequests.js'
 import { SolutionRequest } from './SolutionRequest.js'
+import { useSearchTerm } from './useSearchTerm.js'
+import { useSolutionRequests } from './useSolutionRequests.js'
 
 export function SolutionRequests() {
-  const solutionRequests = useRequests()
+  const searchTerm = useSearchTerm()
+  const solutionRequests = useSolutionRequests(searchTerm)
 
   return (
     <div id="solutionRequests">
