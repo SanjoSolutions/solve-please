@@ -8,3 +8,7 @@
 * [X] "Also looking for a solution for this problem" button seems to be pressable, 
       even though the user has already clicked it before.
 * [X] Fix navigation menu on mobile
+* [ ] Log out
+* [ ] Show currently logged in user
+* [ ] Disable "Submit request" button while the submission is in progress.
+* [ ] Search function
