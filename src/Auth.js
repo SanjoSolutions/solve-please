@@ -9,7 +9,10 @@ export function Auth() {
     node => {
       if (node) {
         const auth = firebase.auth()
-        const ui = new firebaseui.auth.AuthUI(auth)
+        let ui = firebaseui.auth.AuthUI.getInstance()
+        if (!ui) {
+          ui = new firebaseui.auth.AuthUI(auth)
+        }
         ui.start(node, {
           callbacks: {
             signInSuccessWithAuthResult(authResult, redirectUrl) {
