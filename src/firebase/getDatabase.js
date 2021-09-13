@@ -1,4 +1,4 @@
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import 'firebase/firestore'
 import { isDevelopment } from '../isDevelopment.js'
 import memoize from 'lodash.memoize'
