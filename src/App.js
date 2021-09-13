@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import {
   Switch,
   Route,
@@ -23,23 +23,35 @@ function App() {
     [location]
   )
 
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggleCollapse = useCallback(
+    function () {
+      setIsOpen(!isOpen)
+    },
+    [isOpen]
+  )
+
   return (
     <div>
       <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light mb-2">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">Solve please</a>
           <button
+            onClick={toggleCollapse}
             className="navbar-toggler"
             type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"/>
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <div className={classNames({
+            'collapse': !isOpen,
+            'show': isOpen,
+            'navbar-collapse': true
+          })}>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link

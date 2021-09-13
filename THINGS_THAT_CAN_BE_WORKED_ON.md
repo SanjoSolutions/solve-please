@@ -7,3 +7,4 @@
 * [ ] Only a part of the placerholder text seems to be visible with the current search input width.
 * [X] "Also looking for a solution for this problem" button seems to be pressable, 
       even though the user has already clicked it before.
+* [X] Fix navigation menu on mobile
