@@ -14,7 +14,8 @@ export function useUserSolutionRequests() {
         if (!hasBeenUnmounted && user) {
           const userId = user.uid
           const database = firebase.firestore()
-          const userSolutionRequestsRef = database.collection('users').doc(userId)
+          const userSolutionRequestsRef = database.collection('users')
+            .doc(userId)
             .collection('requests')
           unsubscribe = userSolutionRequestsRef.onSnapshot(snapshot => {
             if (!hasBeenUnmounted) {
