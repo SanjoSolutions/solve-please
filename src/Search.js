@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef } from 'react'
 import { useHistory } from 'react-router-dom'
 import { isSearchEventSupported } from './isSearchEventSupported.js'
 import { useSearchTerm } from './useSearchTerm.js'
+import './Search.css'
 
 export function Search() {
   const history = useHistory()
@@ -65,7 +66,10 @@ export function Search() {
   )
 
   return (
-    <form onSubmit={ onSubmit } className="d-flex">
+    <form
+      onSubmit={ onSubmit }
+      className="search d-flex"
+    >
       <input
         ref={ onInputAttached }
         className="form-control me-2"
@@ -73,7 +77,6 @@ export function Search() {
         title="Search for solution requests"
         placeholder="Search for solution requests"
         aria-label="Search"
-        style={ { minWidth: '24rem' } }
         defaultValue={ searchTerm }
       />
       <button className="btn btn-outline-dark" type="submit">Search</button>
