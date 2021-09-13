@@ -7,9 +7,11 @@ import { LogOut } from './LogOut.js'
 import { RequestSolution } from './RequestSolution.js'
 import { Search } from './Search.js'
 import { SolutionRequests } from './SolutionRequests.js'
+import { useIsInitializing } from './useIsInitializing.js'
 import { useUser } from './useUser.js'
 
 function App() {
+  const isInitializing = useIsInitializing()
   const user = useUser()
 
   const location = useLocation()
@@ -81,7 +83,7 @@ function App() {
               </li>
             </ul>
             <Search />
-            {user ? <LogOut /> : <LogIn />}
+            {isInitializing ? null : (user ? <LogOut /> : <LogIn />)}
           </div>
         </div>
       </nav>
