@@ -84,8 +84,10 @@ function App() {
               <input
                 className="form-control me-2"
                 type="search"
+                title="Search for solution requests"
                 placeholder="Search for solution requests"
                 aria-label="Search"
+                style={{minWidth: '24rem'}}
               />
               <button className="btn btn-outline-dark" type="submit">Search</button>
             </form>
