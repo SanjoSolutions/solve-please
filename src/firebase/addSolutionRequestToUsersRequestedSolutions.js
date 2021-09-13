@@ -7,7 +7,7 @@ export async function addSolutionRequestToUsersRequestedSolutions(solutionReques
   if (userId) {
     const requestsRef = database
       .collection('users').doc(userId)
-      .collection('requests')
+      .collection('solutionRequests')
     await requestsRef.doc(solutionRequestId).set({})
   }
 }

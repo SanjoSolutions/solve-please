@@ -41,7 +41,7 @@ service cloud.firestore {
       allow update, delete: if false;
     }
 
-    match /users/{userId}/requests/{solutionRequestId} {
+    match /users/{userId}/solutionRequests/{solutionRequestId} {
       allow create, update: if (
         request.auth != null &&
         request.auth.uid == userId &&

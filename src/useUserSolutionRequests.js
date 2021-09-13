@@ -17,7 +17,7 @@ export function useUserSolutionRequests() {
           const database = getDatabase()
           const userSolutionRequestsRef = database.collection('users')
             .doc(userId)
-            .collection('requests')
+            .collection('solutionRequests')
           unsubscribe = userSolutionRequestsRef.onSnapshot(snapshot => {
             if (!hasBeenUnmounted) {
               const solutionRequests = []
