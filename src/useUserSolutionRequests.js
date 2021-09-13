@@ -36,7 +36,8 @@ export function useUserSolutionRequests() {
           unsubscribe()
         }
       }
-    }
+    },
+    []
   )
 
   return userSolutionRequests
