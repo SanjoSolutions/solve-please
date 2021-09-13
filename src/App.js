@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import React, { useCallback, useState } from 'react'
 import { Link, Route, Switch, useLocation } from 'react-router-dom'
 import { Auth } from './Auth.js'
+import { LogOut } from './LogOut.js'
 import { RequestSolution } from './RequestSolution.js'
 import { Search } from './Search.js'
 import { SolutionRequests } from './SolutionRequests.js'
@@ -79,6 +80,7 @@ function App() {
               </li>
             </ul>
             <Search />
+            {user && <LogOut />}
           </div>
         </div>
       </nav>
