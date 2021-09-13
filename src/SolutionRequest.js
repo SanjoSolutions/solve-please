@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import './SolutionRequest.css'
 import { requestASolutionToo } from './domain/requestSolutionToo.js'
+import { addSolutionRequestToUsersRequestedSolutions } from './firebase/addSolutionRequestToUsersRequestedSolutions.js'
 import { getDatabase } from './firebase/getDatabase.js'
 import { initializeApp } from './firebase/initializeApp.js'
 import { useUserSolutionRequests } from './useUserSolutionRequests.js'
@@ -43,6 +44,8 @@ export function SolutionRequest({solutionRequest}) {
             async (transaction) => {
               const solutionRequest = await transaction.get(solutionRequestReference)
               if (solutionRequest.exists) {
+                await addSolutionRequestToUsersRequestedSolutions(solutionRequest.id)
+
                 const newNumberOfRequesters2 = requestASolutionToo(
                   solutionRequest.data().numberOfRequesters ?? 0
                 )

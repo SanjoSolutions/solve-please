@@ -1,6 +1,5 @@
 import React from 'react'
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/firestore'
+import { addSolutionRequestToUsersRequestedSolutions } from './firebase/addSolutionRequestToUsersRequestedSolutions.js'
 import { getDatabase } from './firebase/getDatabase.js'
 import { initializeApp } from './firebase/initializeApp.js'
 import { withRouter } from 'react-router'
@@ -32,11 +31,7 @@ class RequestSolutionBase extends React.Component {
       details,
       numberOfRequesters: 1,
     })
-    const userId = firebase.auth().currentUser?.uid
-    const requestsRef = database
-      .collection('users').doc(userId)
-      .collection('requests')
-    await requestsRef.doc(requestRef.id).set({})
+    await addSolutionRequestToUsersRequestedSolutions(requestRef.id)
     this.setState({isSubmitting: false})
     this.props.history.push('/')
   }
