@@ -15,4 +15,4 @@
 * [ ] Propose solution functionality
 * [ ] Support the display of many solution requests
 * [ ] Support for search with many solution requests
-* [ ] "Also looking for a solution for this problem" buttons seem first clickable before they become unclickable (as expected).
+* [X] "Also looking for a solution for this problem" buttons seem first clickable before they become unclickable (as expected).

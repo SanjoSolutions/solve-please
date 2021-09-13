@@ -22,9 +22,11 @@ export function SolutionRequest({solutionRequest}) {
   )
 
   const userSolutionRequests = useUserSolutionRequests()
-  const userSolutionRequestIds = new Set(
-    userSolutionRequests.map(userSolutionRequest => userSolutionRequest.id)
-  )
+  const userSolutionRequestIds = userSolutionRequests ?
+    new Set(
+      userSolutionRequests.map(userSolutionRequest => userSolutionRequest.id)
+    ) :
+    null
   const [
     isAlsoLookingForASolutionForThisProblemRequestInProgress,
     setIsAlsoLookingForASolutionForThisProblemRequestInProgress
@@ -95,7 +97,11 @@ export function SolutionRequest({solutionRequest}) {
           </button>*/}{/*
         */}<button
             className="btn btn-light also-looking-for-a-solution-for-this-problem"
-            disabled={isAlsoLookingForASolutionForThisProblemRequestInProgress || userSolutionRequestIds.has(id)}
+            disabled={
+              isAlsoLookingForASolutionForThisProblemRequestInProgress ||
+              !userSolutionRequestIds ||
+              userSolutionRequestIds.has(id)
+            }
             onClick={onAlsoLookingForASolutionForThisProblem}
           >
               Also looking for a solution for this problem

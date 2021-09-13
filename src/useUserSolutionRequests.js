@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { getDatabase } from './firebase/getDatabase.js'
 
 export function useUserSolutionRequests() {
-  const [userSolutionRequests, setUserSolutionRequests] = useState([])
+  const [userSolutionRequests, setUserSolutionRequests] = useState(null)
 
   useEffect(
     () => {
