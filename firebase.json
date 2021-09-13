@@ -27,6 +27,20 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/404.html",
+        "destination": "/404.html"
+      },
+      {
+        "source": "/google7e4b083801a60355.html",
+        "destination": "/google7e4b083801a60355.html"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
   },
   "firestore": {
