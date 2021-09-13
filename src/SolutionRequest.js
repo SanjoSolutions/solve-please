@@ -4,8 +4,6 @@ import { requestASolutionToo } from './domain/requestSolutionToo.js'
 import { getDatabase } from './firebase/getDatabase.js'
 import { initializeApp } from './firebase/initializeApp.js'
 import { useUserSolutionRequests } from './useUserSolutionRequests.js'
-import firebase from 'firebase/app'
-import 'firebase/firestore'
 
 initializeApp()
 
