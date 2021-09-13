@@ -17,6 +17,7 @@ export function useRequireLoggedIn() {
       }
     },
     [
+      isInitializing,
       user,
       history,
     ],
