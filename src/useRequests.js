@@ -1,5 +1,3 @@
-import firebase from 'firebase/app'
-import 'firebase/firestore'
 import { useState, useEffect } from 'react'
 import { getDatabase } from './firebase/getDatabase.js'
 
