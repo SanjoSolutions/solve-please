@@ -34,6 +34,10 @@
         "destination": "/404.html"
       },
       {
+        "source": "/sitemap.xml",
+        "destination": "/sitemap.xml"
+      },
+      {
         "source": "/google7e4b083801a60355.html",
         "destination": "/google7e4b083801a60355.html"
       },
