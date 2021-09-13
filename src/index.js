@@ -7,7 +7,8 @@ import './index.css'
 import App from './App'
 import { initializeApp } from './firebase/initializeApp.js'
 import reportWebVitals from './reportWebVitals'
-import firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 import * as firebaseui from 'firebaseui'
 
 initializeApp()
