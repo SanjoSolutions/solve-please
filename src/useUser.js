@@ -1,5 +1,5 @@
 import firebase from 'firebase'
-import 'firebase/firestore'
+import 'firebase/auth'
 import { useState, useEffect } from 'react'
 
 export function useUser() {
