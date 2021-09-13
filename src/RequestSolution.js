@@ -12,6 +12,9 @@ const database = getDatabase()
 class RequestSolutionBase extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      isSubmitting: false
+    }
     this.onSubmit = this.onSubmit.bind(this)
     this.summaryRef = React.createRef(null)
     this.detailsRef = React.createRef(null)
@@ -19,6 +22,7 @@ class RequestSolutionBase extends React.Component {
 
   async onSubmit(event) {
     event.preventDefault()
+    this.setState({isSubmitting: true})
     const $summary = this.summaryRef.current
     const $details = this.detailsRef.current
     const summary = $summary.value
@@ -33,6 +37,7 @@ class RequestSolutionBase extends React.Component {
       .collection('users').doc(userId)
       .collection('requests')
     await requestsRef.doc(requestRef.id).set({})
+    this.setState({isSubmitting: false})
     this.props.history.push('/')
   }
 
@@ -66,7 +71,13 @@ class RequestSolutionBase extends React.Component {
             />
           </div>
           <div className="text-end">
-            <button type="submit" className="btn btn-primary">Submit request</button>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={this.state.isSubmitting}
+            >
+              Submit request
+            </button>
           </div>
         </form>
       </div>
