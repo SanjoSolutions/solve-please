@@ -6,14 +6,17 @@ export function useRequests() {
   const [requests, setRequests] = useState([])
 
   useEffect(
-    async () => {
-      const database = firebase.firestore()
-      const solutionRequests = await database.collection('solutionRequests')
-        .get(
-          database.collection('solutionRequests')
-            .orderBy('numberOfRequesters', 'desc'),
-        )
-      setRequests(solutionRequests.docs)
+    () => {
+      async function retrieveSolutionRequests() {
+        const database = firebase.firestore()
+        const solutionRequests = await database.collection('solutionRequests')
+          .get(
+            database.collection('solutionRequests')
+              .orderBy('numberOfRequesters', 'desc'),
+          )
+        setRequests(solutionRequests.docs)
+      }
+      retrieveSolutionRequests()
     },
     []
   )
