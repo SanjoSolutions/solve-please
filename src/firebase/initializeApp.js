@@ -3,9 +3,7 @@ import once from 'lodash.once'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCcWA6ATqEHbxfK3LfHpwvIukjdIKeUatM',
-  authDomain: isDevelopment() ?
-    'localhost' :
-    'solve-please.firebaseapp.com',
+  authDomain: 'solve-please.firebaseapp.com',
   projectId: 'solve-please',
   storageBucket: 'solve-please.appspot.com',
   messagingSenderId: '45732995708',
