@@ -19,9 +19,9 @@ export function SolutionRequests() {
               solutionRequest={ solutionRequest }
             />,
           ) :
-          <div class="flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-            <div class="spinner-border" role="status">
-              <span class="visually-hidden">Loading...</span>
+          <div className="flex-grow-1 d-flex flex-column align-items-center justify-content-center">
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
             </div>
           </div>
       }
