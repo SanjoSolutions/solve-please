@@ -15,7 +15,9 @@ service cloud.firestore {
         request.resource.data.summary is string &&
         request.resource.data.details is string &&
         request.resource.data.numberOfRequesters is int &&
-        request.resource.data.summaryAndDetailsWords is list
+        request.resource.data.summaryAndDetailsWords is list &&
+        request.resource.data.summary.size() <= 400 &&
+        request.resource.data.details.size() <= 700
       );
       allow read: if true;
       allow update: if (

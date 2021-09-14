@@ -59,6 +59,7 @@ export function RequestSolution() {
             rows={ 3 }
             autoFocus
             defaultValue={ '' }
+            maxLength={400}
           />
         </div>
         <div className="mb-3">
@@ -69,6 +70,7 @@ export function RequestSolution() {
             name="details"
             rows={ 6 }
             defaultValue={ '' }
+            maxLength={700}
           />
         </div>
         <div className="text-end">
