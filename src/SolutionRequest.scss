@@ -1,0 +1,15 @@
+.solution-request {
+  &,
+  &:hover {
+    color: var(--bs-body-color);
+    text-decoration: none;
+  }
+
+  .number-of-requesters {
+    font-size: 2rem;
+  }
+}
+
+a.solution-request:hover {
+  background-color: var(--bs-gray-200);
+}

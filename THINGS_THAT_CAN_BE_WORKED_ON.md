@@ -17,5 +17,5 @@
 * [ ] Support for search with many solution requests
 * [X] "Also looking for a solution for this problem" buttons seem first clickable before they become unclickable (as expected).
 * [ ] Logo
-* [ ] Permalink to solution request
+* [X] Permalink to solution request
 * [ ] Make sure that long summary text works in the UI.

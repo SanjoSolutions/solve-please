@@ -7,6 +7,7 @@ import { LogOut } from './LogOut.js'
 import { ProposeSolution } from './ProposeSolution.js'
 import { RequestSolution } from './RequestSolution.js'
 import { Search } from './Search.js'
+import { SolutionRequestPage } from './SolutionRequestPage.js'
 import { SolutionRequests } from './SolutionRequests.js'
 import { useIsInitializing } from './unnamed/react/firebase/useIsInitializing.js'
 import { useUser } from './unnamed/react/firebase/useUser.js'
@@ -92,6 +93,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <SolutionRequests />
+          </Route>
+          <Route exact path="/solution-requests/:id">
+            <SolutionRequestPage />
           </Route>
           <Route exact path="/log-in">
             <Auth />

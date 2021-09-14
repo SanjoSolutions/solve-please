@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import React, { useCallback, useEffect, useState } from 'react'
 import { SolutionRequest } from './SolutionRequest.js'
+import { Spinner } from './Spinner.js'
 import { first } from './unnamed/packages/array/src/first.js'
 import { last } from './unnamed/packages/array/src/last.js'
 import { partial } from './unnamed/partial.js'
@@ -132,6 +133,7 @@ export function SolutionRequests() {
                   <SolutionRequest
                     key={ solutionRequest.id }
                     solutionRequest={ solutionRequest }
+                    link={true}
                   />,
               )
             }
@@ -173,11 +175,7 @@ export function SolutionRequests() {
             </nav>
 
           </div> :
-          <div className="flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-            <div className="spinner-border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </div>
-          </div>
+          <Spinner />
       }
     </div>
   )

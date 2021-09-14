@@ -1,11 +1,12 @@
 import React, { useCallback, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { requestASolutionToo } from './domain/requestSolutionToo.js'
 import { addSolutionRequestToUsersRequestedSolutions } from './firebase/addSolutionRequestToUsersRequestedSolutions.js'
 import { getProposeSolutionModal } from './getProposeSolutionModal.js'
 import { SolutionProposals } from './SolutionProposals.js'
 import { getDatabase } from './unnamed/firebase/getDatabase.js'
 import { initializeApp } from './firebase/initializeApp.js'
-import './SolutionRequest.css'
+import './SolutionRequest.scss'
 import { useIsLoggedIn } from './unnamed/react/firebase/useIsLoggedIn.js'
 import { useSolutionProposals } from './useSolutionProposals.js'
 import { useUserSolutionRequests } from './useUserSolutionRequests.js'
@@ -16,7 +17,8 @@ initializeApp()
 
 const database = getDatabase()
 
-export function SolutionRequest({ solutionRequest }) {
+export function SolutionRequest({ solutionRequest, link }) {
+  link = link ?? false
   const id = solutionRequest.id
   const requestData = solutionRequest.data()
   const { summary, details } = requestData
@@ -57,7 +59,8 @@ export function SolutionRequest({ solutionRequest }) {
   ] = useState(false)
 
   const onAlsoLookingForASolutionForThisProblem = useCallback(
-    async function onAlsoLookingForASolutionForThisProblem() {
+    async function onAlsoLookingForASolutionForThisProblem(event) {
+      event.preventDefault()
       setIsAlsoLookingForASolutionForThisProblemRequestInProgress(true)
       const newNumberOfRequesters = requestASolutionToo(numberOfRequesters)
       setNumberOfRequesters(newNumberOfRequesters)
@@ -101,7 +104,8 @@ export function SolutionRequest({ solutionRequest }) {
   )
 
   const proposeSolution = useCallback(
-    () => {
+    event => {
+      event.preventDefault()
       sessionStorage.setItem('solutionRequestId', id)
       const modal = getProposeSolutionModal()
       modal.show()
@@ -112,54 +116,70 @@ export function SolutionRequest({ solutionRequest }) {
 
   const solutionProposals = useSolutionProposals(id)
 
-  return (
-    <div data-id={ id } className="card mb-2">
-      <div className="card-body">
-        <span
-          className="number-of-requesters float-end"
-          title="Number of people looking for a solution for this problem"
+  const inner = (
+    <div className="card-body">
+      <span
+        className="number-of-requesters float-end"
+        title="Number of people looking for a solution for this problem"
+      >
+        { numberOfRequesters }
+      </span>
+      <h5 className="card-title">{ title }</h5>
+      <p>
+        { body }
+      </p>
+      <SolutionProposals solutionProposals={solutionProposals} />
+      {/*<a href="#" className="card-link">Details</a>*/ }
+      <div className="float-end">
+        <div
+          ref={initializePopover}
+          className="d-inline-block"
+          tabIndex="0"
         >
-          { numberOfRequesters }
-        </span>
-        <h5 className="card-title">{ title }</h5>
-        <p>
-          { body }
-        </p>
-        <SolutionProposals solutionProposals={solutionProposals} />
-        {/*<a href="#" className="card-link">Details</a>*/ }
-        <div className="float-end">
-          <div
-            ref={initializePopover}
-            className="d-inline-block"
-            tabIndex="0"
+          <button
+            onClick={proposeSolution}
+            className="btn btn-light propose-solution mb-2 mb-md-0 me-2"
+            disabled={!isLoggedIn}
           >
-            <button
-              onClick={proposeSolution}
-              className="btn btn-light propose-solution mb-2 mb-md-0 me-2"
-              disabled={!isLoggedIn}
-            >
-              Propose solution
-            </button>
-          </div>
-          <div
-            ref={initializePopover}
-            className="d-inline-block"
-            tabIndex="0"
+            Propose solution
+          </button>
+        </div>
+        <div
+          ref={initializePopover}
+          className="d-inline-block"
+          tabIndex="0"
+        >
+          <button
+            className="btn btn-light also-looking-for-a-solution-for-this-problem"
+            disabled={
+              isAlsoLookingForASolutionForThisProblemRequestInProgress ||
+              !userSolutionRequestIds ||
+              userSolutionRequestIds.has(id)
+            }
+            onClick={ onAlsoLookingForASolutionForThisProblem }
           >
-            <button
-              className="btn btn-light also-looking-for-a-solution-for-this-problem"
-              disabled={
-                isAlsoLookingForASolutionForThisProblemRequestInProgress ||
-                !userSolutionRequestIds ||
-                userSolutionRequestIds.has(id)
-              }
-              onClick={ onAlsoLookingForASolutionForThisProblem }
-            >
-              Also looking for a solution for this problem
-            </button>
-          </div>
+            Also looking for a solution for this problem
+          </button>
         </div>
       </div>
     </div>
   )
+
+  const classNames = 'solution-request card mb-2'
+  let outer
+  if (link) {
+    outer = (
+      <Link to={`/solution-requests/${id}`} className={classNames}>
+        {inner}
+      </Link>
+    )
+  } else {
+    outer = (
+      <div className={classNames}>
+        {inner}
+      </div>
+    )
+  }
+
+  return outer
 }
