@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useIsInitializing } from './useIsInitializing.js'
-import { useUser } from './useUser.js'
+import { useUser } from './unnamed/react/firebase/useUser.js'
 
 export function useRequireLoggedIn() {
   const isInitializing = useIsInitializing()

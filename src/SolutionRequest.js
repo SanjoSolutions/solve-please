@@ -4,7 +4,7 @@ import { addSolutionRequestToUsersRequestedSolutions } from './firebase/addSolut
 import { getDatabase } from './firebase/getDatabase.js'
 import { initializeApp } from './firebase/initializeApp.js'
 import './SolutionRequest.css'
-import { useIsLoggedIn } from './useIsLoggedIn.js'
+import { useIsLoggedIn } from './unnamed/react/firebase/useIsLoggedIn.js'
 import { useUserSolutionRequests } from './useUserSolutionRequests.js'
 
 /* global bootstrap */
