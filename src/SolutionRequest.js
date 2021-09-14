@@ -33,7 +33,8 @@ export function SolutionRequest({ solutionRequest }) {
           node,
           {
             trigger: 'hover focus',
-            content: 'Please log in first.'
+            content: 'Please log in first.',
+            placement: 'top'
           }
         )
       }
