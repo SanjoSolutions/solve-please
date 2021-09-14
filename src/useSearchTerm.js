@@ -1,9 +1,7 @@
-import querystring from 'querystring'
-import { useLocation } from 'react-router-dom'
+import { useQuery } from './unnamed/react/useQuery.js'
 
 export function useSearchTerm() {
-  const location = useLocation()
-  const query = querystring.parse(location.search.substr(1))
-  const searchTerm = query.q
+  const query = useQuery()
+  const searchTerm = query.get('q')
   return searchTerm
 }
