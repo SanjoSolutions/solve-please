@@ -28,7 +28,7 @@ export function Search() {
         const searchText = input.value
         let path = '/'
         if (searchText.length >= 1) {
-          path += `?q=${ encodeURIComponent(searchText) }`
+          path += `search?q=${ encodeURIComponent(searchText) }`
         }
         history.push(path)
       }

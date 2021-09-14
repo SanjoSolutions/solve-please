@@ -9,9 +9,11 @@ import { retrieveDocuments } from './unnamed/react/firebase/useDocuments.js'
 import { useSearchTerm } from './useSearchTerm.js'
 import { filterSolutionRequests, generateQueryRef } from './useSolutionRequests.js'
 
+
+
 export function SolutionRequests() {
   const searchTerm = useSearchTerm()
-  const itemsPerPage = 20
+  const itemsPerPage = 2
   const [previousSolutionRequests, setPreviousSolutionRequests] = useState(null)
   const [solutionRequests, setSolutionRequests] = useState(null)
   const [nextSolutionRequests, setNextSolutionRequests] = useState(null)
@@ -132,7 +134,7 @@ export function SolutionRequests() {
                   <SolutionRequest
                     key={ solutionRequest.id }
                     solutionRequest={ solutionRequest }
-                    link={true}
+                    link={ true }
                   />,
               )
             }
