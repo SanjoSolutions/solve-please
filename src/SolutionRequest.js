@@ -2,7 +2,6 @@ import React, { useCallback, useState } from 'react'
 import { requestASolutionToo } from './domain/requestSolutionToo.js'
 import { addSolutionRequestToUsersRequestedSolutions } from './firebase/addSolutionRequestToUsersRequestedSolutions.js'
 import { getProposeSolutionModal } from './getProposeSolutionModal.js'
-import { SolutionProposal } from './SolutionProposal.js'
 import { SolutionProposals } from './SolutionProposals.js'
 import { getDatabase } from './unnamed/firebase/getDatabase.js'
 import { initializeApp } from './firebase/initializeApp.js'
@@ -129,12 +128,19 @@ export function SolutionRequest({ solutionRequest }) {
         <SolutionProposals solutionProposals={solutionProposals} />
         {/*<a href="#" className="card-link">Details</a>*/ }
         <div className="float-end">
-          <button
-            onClick={proposeSolution}
-            className="btn btn-light propose-solution mb-2 mb-md-0 me-2"
+          <div
+            ref={initializePopover}
+            className="d-inline-block"
+            tabIndex="0"
           >
-            Propose solution
-          </button>
+            <button
+              onClick={proposeSolution}
+              className="btn btn-light propose-solution mb-2 mb-md-0 me-2"
+              disabled={!isLoggedIn}
+            >
+              Propose solution
+            </button>
+          </div>
           <div
             ref={initializePopover}
             className="d-inline-block"
