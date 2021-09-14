@@ -5,6 +5,7 @@ import { addSolutionRequestToUsersRequestedSolutions } from './firebase/addSolut
 import { getDatabase } from './unnamed/firebase/getDatabase.js'
 import { initializeApp } from './firebase/initializeApp.js'
 import { useRequireLoggedIn } from './unnamed/react/firebase/useRequireLoggedIn.js'
+import { unique } from './unnamed/unique.js'
 
 initializeApp()
 
@@ -29,7 +30,9 @@ export function RequestSolution() {
         summary,
         details,
         numberOfRequesters: 1,
-        summaryWords: extractWords(summary)
+        summaryAndDetailsWords: unique(
+          extractWords(summary).concat(extractWords(details))
+        )
       })
       await addSolutionRequestToUsersRequestedSolutions(requestRef.id)
       setIsSubmitting(false)

@@ -9,13 +9,13 @@ service cloud.firestore {
             'summary',
             'details',
             'numberOfRequesters',
-            'summaryWords'
+            'summaryAndDetailsWords'
           ]
         ) &&
         request.resource.data.summary is string &&
         request.resource.data.details is string &&
         request.resource.data.numberOfRequesters is int &&
-        request.resource.data.summaryWords is list
+        request.resource.data.summaryAndDetailsWords is list
       );
       allow read: if true;
       allow update: if (

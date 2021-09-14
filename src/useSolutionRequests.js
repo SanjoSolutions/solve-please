@@ -42,7 +42,7 @@ export function generateQueryRef({
     .orderBy('numberOfRequesters', 'desc')
   if (searchTerm) {
     queryRef = queryRef.where(
-      'summaryWords',
+      'summaryAndDetailsWords',
       'array-contains-any',
       searchTerm.split(' ').slice(0, 10),
     )
