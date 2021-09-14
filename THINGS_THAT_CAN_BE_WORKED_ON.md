@@ -12,7 +12,7 @@
 * ~~[ ] Show currently logged in user~~ (The log out button seems to be already an indicator that the user is logged in.)
 * [X] Disable "Submit request" button while the submission is in progress.
 * [X] Search function
-* [ ] Propose solution functionality
+* [X] Propose solution functionality
 * [ ] Support the display of many solution requests
 * [ ] Support for search with many solution requests
 * [X] "Also looking for a solution for this problem" buttons seem first clickable before they become unclickable (as expected).
