@@ -26,7 +26,7 @@ export function SolutionRequestPage() {
 
 
   return (
-    <div>
+    <div className="flex-grow-1 d-flex flex-column">
       <h1 className="h2">Solution request</h1>
       {
         solutionRequest ?
