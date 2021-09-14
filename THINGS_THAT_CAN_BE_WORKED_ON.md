@@ -20,5 +20,5 @@
 * [X] Permalink to solution request
 * [X] Make sure that long summary text works in the UI.
 * [X] Length constraint for summary (400 characters maximum) and details (700 characters maximum) text?
-* [ ] When opening "http://localhost:3000/request-solution" it seems to redirect to "http://localhost:3000/log-in" 
+* [X] When opening "http://localhost:3000/request-solution" it seems to redirect to "http://localhost:3000/log-in" 
       even though the user seems to be logged in.
