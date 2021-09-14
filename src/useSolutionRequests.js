@@ -1,7 +1,5 @@
-import { useCallback, useMemo } from 'react'
-import { isSolutionRequestWhichIncludesSearchTerm } from './isSolutionRequestWhichIncludesSearchTerm.js'
+import { useMemo } from 'react'
 import { getDatabase } from './unnamed/firebase/getDatabase.js'
-import { partial } from './unnamed/partial.js'
 import { useDocuments } from './unnamed/react/firebase/useDocuments.js'
 
 export function useSolutionRequests({
@@ -9,40 +7,46 @@ export function useSolutionRequests({
   startAfter,
   endBefore,
   limit,
-  limitToLast
+  limitToLast,
 }) {
   const queryRef = useMemo(
     () => generateQueryRef({
+      searchTerm,
       startAfter,
       endBefore,
       limit,
-      limitToLast
+      limitToLast,
     }),
     [
+      searchTerm,
       startAfter,
       endBefore,
       limit,
-      limitToLast
-    ]
-  )
-  const filterFn = useCallback(
-    (solutionRequests) => filterSolutionRequests(searchTerm, solutionRequests),
-    [searchTerm],
+      limitToLast,
+    ],
   )
 
-  return useDocuments(queryRef, filterFn)
+  return useDocuments(queryRef)
 }
 
 export function generateQueryRef({
+  searchTerm,
   startAfter,
   endBefore,
   limit,
-  limitToLast
+  limitToLast,
 }) {
   const database = getDatabase()
   let queryRef = database
     .collection('solutionRequests')
     .orderBy('numberOfRequesters', 'desc')
+  if (searchTerm) {
+    queryRef = queryRef.where(
+      'summaryWords',
+      'array-contains-any',
+      searchTerm.split(' ').slice(0, 10),
+    )
+  }
   if (startAfter) {
     queryRef = queryRef.startAfter(startAfter)
   }
@@ -56,13 +60,4 @@ export function generateQueryRef({
     queryRef = queryRef.limitToLast(limitToLast)
   }
   return queryRef
-}
-
-export function filterSolutionRequests(searchTerm, solutionRequests) {
-  if (searchTerm) {
-    solutionRequests = solutionRequests.filter(
-      partial(isSolutionRequestWhichIncludesSearchTerm, searchTerm),
-    )
-  }
-  return solutionRequests
 }

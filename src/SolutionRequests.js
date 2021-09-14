@@ -4,10 +4,9 @@ import { SolutionRequest } from './SolutionRequest.js'
 import { Spinner } from './Spinner.js'
 import { first } from './unnamed/packages/array/src/first.js'
 import { last } from './unnamed/packages/array/src/last.js'
-import { partial } from './unnamed/partial.js'
 import { retrieveDocuments } from './unnamed/react/firebase/useDocuments.js'
 import { useSearchTerm } from './useSearchTerm.js'
-import { filterSolutionRequests, generateQueryRef } from './useSolutionRequests.js'
+import { generateQueryRef } from './useSolutionRequests.js'
 
 export function SolutionRequests() {
   const searchTerm = useSearchTerm()
@@ -21,14 +20,11 @@ export function SolutionRequests() {
       async function retrieve() {
         const queryRef = generateQueryRef(
           {
+            searchTerm,
             limit: itemsPerPage,
           },
         )
-        const filterFn = partial(filterSolutionRequests, searchTerm)
-        const documents = await retrieveDocuments(
-          queryRef,
-          filterFn,
-        )
+        const documents = await retrieveDocuments(queryRef)
         setSolutionRequests(documents)
       }
 
@@ -48,11 +44,7 @@ export function SolutionRequests() {
               limit: itemsPerPage,
             },
           )
-          const filterFn = partial(filterSolutionRequests, searchTerm)
-          const documents = await retrieveDocuments(
-            queryRef,
-            filterFn,
-          )
+          const documents = await retrieveDocuments(queryRef)
           setNextSolutionRequests(documents)
         }
 
@@ -77,11 +69,7 @@ export function SolutionRequests() {
               limitToLast: itemsPerPage,
             },
           )
-          const filterFn = partial(filterSolutionRequests, searchTerm)
-          const documents = await retrieveDocuments(
-            queryRef,
-            filterFn,
-          )
+          const documents = await retrieveDocuments(queryRef)
           setPreviousSolutionRequests(documents)
         }
 

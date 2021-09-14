@@ -8,12 +8,14 @@ service cloud.firestore {
           [
             'summary',
             'details',
-            'numberOfRequesters'
+            'numberOfRequesters',
+            'summaryWords'
           ]
         ) &&
         request.resource.data.summary is string &&
         request.resource.data.details is string &&
-        request.resource.data.numberOfRequesters is int
+        request.resource.data.numberOfRequesters is int &&
+        request.resource.data.summaryWords is list
       );
       allow read: if true;
       allow update: if (

@@ -1,5 +1,6 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { extractWords } from './extractWords.js'
 import { addSolutionRequestToUsersRequestedSolutions } from './firebase/addSolutionRequestToUsersRequestedSolutions.js'
 import { getDatabase } from './unnamed/firebase/getDatabase.js'
 import { initializeApp } from './firebase/initializeApp.js'
@@ -28,6 +29,7 @@ export function RequestSolution() {
         summary,
         details,
         numberOfRequesters: 1,
+        summaryWords: extractWords(summary)
       })
       await addSolutionRequestToUsersRequestedSolutions(requestRef.id)
       setIsSubmitting(false)
