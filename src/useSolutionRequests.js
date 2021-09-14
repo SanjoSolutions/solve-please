@@ -3,7 +3,7 @@ import { getDatabase } from './unnamed/firebase/getDatabase.js'
 import { useDocuments } from './unnamed/react/firebase/useDocuments.js'
 
 export function useSolutionRequests({
-  searchTerm,
+  searchTerms,
   startAfter,
   endBefore,
   limit,
@@ -11,14 +11,14 @@ export function useSolutionRequests({
 }) {
   const queryRef = useMemo(
     () => generateQueryRef({
-      searchTerm,
+      searchTerms,
       startAfter,
       endBefore,
       limit,
       limitToLast,
     }),
     [
-      searchTerm,
+      searchTerms,
       startAfter,
       endBefore,
       limit,
@@ -30,7 +30,7 @@ export function useSolutionRequests({
 }
 
 export function generateQueryRef({
-  searchTerm,
+  searchTerms,
   startAfter,
   endBefore,
   limit,
@@ -40,11 +40,11 @@ export function generateQueryRef({
   let queryRef = database
     .collection('solutionRequests')
     .orderBy('numberOfRequesters', 'desc')
-  if (searchTerm) {
+  if (searchTerms) {
     queryRef = queryRef.where(
       'summaryAndDetailsWords',
       'array-contains-any',
-      searchTerm.split(' ').slice(0, 10),
+      searchTerms.split(' ').slice(0, 10),
     )
   }
   if (startAfter) {

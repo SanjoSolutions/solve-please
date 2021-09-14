@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef } from 'react'
 import { useHistory } from 'react-router-dom'
 import { isSearchEventSupported } from './isSearchEventSupported.js'
-import { useSearchTerm } from './useSearchTerm.js'
+import { useSearchTerms } from './useSearchTerms.js'
 import './Search.css'
 
 export function Search() {
@@ -9,16 +9,16 @@ export function Search() {
 
   const inputRef = useRef()
 
-  const searchTerm = useSearchTerm()
+  const searchTerms = useSearchTerms()
 
   useEffect(
-    function syncQuerySearchTermWithSearchInputValue() {
+    function syncQuerySearchTermsWithSearchInputValue() {
       const input = inputRef.current
       if (input) {
-        input.value = searchTerm ?? ''
+        input.value = searchTerms ?? ''
       }
     },
-    [searchTerm]
+    [searchTerms]
   )
 
   const updateQueryString = useCallback(
@@ -89,7 +89,7 @@ export function Search() {
         title="Search for solution requests"
         placeholder="Search for solution requests"
         aria-label="Search"
-        defaultValue={ searchTerm }
+        defaultValue={ searchTerms }
       />
       <button
         onClick={ onClick }

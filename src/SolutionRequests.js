@@ -5,11 +5,11 @@ import { Spinner } from './Spinner.js'
 import { first } from './unnamed/packages/array/src/first.js'
 import { last } from './unnamed/packages/array/src/last.js'
 import { retrieveDocuments } from './unnamed/react/firebase/useDocuments.js'
-import { useSearchTerm } from './useSearchTerm.js'
+import { useSearchTerms } from './useSearchTerms.js'
 import { generateQueryRef } from './useSolutionRequests.js'
 
 export function SolutionRequests() {
-  const searchTerm = useSearchTerm()
+  const searchTerms = useSearchTerms()
   const itemsPerPage = 20
   const [previousSolutionRequests, setPreviousSolutionRequests] = useState(null)
   const [solutionRequests, setSolutionRequests] = useState(null)
@@ -21,7 +21,7 @@ export function SolutionRequests() {
         setSolutionRequests(null)
         const queryRef = generateQueryRef(
           {
-            searchTerm,
+            searchTerms,
             limit: itemsPerPage,
           },
         )
@@ -31,7 +31,7 @@ export function SolutionRequests() {
 
       retrieve()
     },
-    [searchTerm],
+    [searchTerms],
   )
 
   useEffect(
@@ -40,7 +40,7 @@ export function SolutionRequests() {
         async function retrieve() {
           const queryRef = generateQueryRef(
             {
-              searchTerm,
+              searchTerms,
               startAfter: last(solutionRequests),
               limit: itemsPerPage,
             },
@@ -55,7 +55,7 @@ export function SolutionRequests() {
     [
       solutionRequests,
       nextSolutionRequests,
-      searchTerm,
+      searchTerms,
     ],
   )
 
@@ -65,7 +65,7 @@ export function SolutionRequests() {
         async function retrieve() {
           const queryRef = generateQueryRef(
             {
-              searchTerm,
+              searchTerms,
               endBefore: first(solutionRequests),
               limitToLast: itemsPerPage,
             },
@@ -80,7 +80,7 @@ export function SolutionRequests() {
     [
       solutionRequests,
       previousSolutionRequests,
-      searchTerm,
+      searchTerms,
     ],
   )
 
