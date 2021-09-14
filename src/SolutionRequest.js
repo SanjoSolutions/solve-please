@@ -1,10 +1,14 @@
 import React, { useCallback, useState } from 'react'
 import { requestASolutionToo } from './domain/requestSolutionToo.js'
 import { addSolutionRequestToUsersRequestedSolutions } from './firebase/addSolutionRequestToUsersRequestedSolutions.js'
+import { getProposeSolutionModal } from './getProposeSolutionModal.js'
+import { SolutionProposal } from './SolutionProposal.js'
+import { SolutionProposals } from './SolutionProposals.js'
 import { getDatabase } from './unnamed/firebase/getDatabase.js'
 import { initializeApp } from './firebase/initializeApp.js'
 import './SolutionRequest.css'
 import { useIsLoggedIn } from './unnamed/react/firebase/useIsLoggedIn.js'
+import { useSolutionProposals } from './useSolutionProposals.js'
 import { useUserSolutionRequests } from './useUserSolutionRequests.js'
 
 /* global bootstrap */
@@ -96,6 +100,18 @@ export function SolutionRequest({ solutionRequest }) {
     ],
   )
 
+  const proposeSolution = useCallback(
+    () => {
+      sessionStorage.setItem('solutionRequestId', id)
+      const modal = getProposeSolutionModal()
+      modal.show()
+      document.getElementById('solution').focus()
+    },
+    [id]
+  )
+
+  const solutionProposals = useSolutionProposals(id)
+
   return (
     <div data-id={ id } className="card mb-2">
       <div className="card-body">
@@ -109,13 +125,15 @@ export function SolutionRequest({ solutionRequest }) {
         <p>
           { body }
         </p>
+        <SolutionProposals solutionProposals={solutionProposals} />
         {/*<a href="#" className="card-link">Details</a>*/ }
         <div className="float-end">
-          {/*
-          <button className="btn btn-light propose-solution mb-2 mb-md-0 me-2">
+          <button
+            onClick={proposeSolution}
+            className="btn btn-light propose-solution mb-2 mb-md-0 me-2"
+          >
             Propose solution
-          </button>*/ }{/*
-        */ }
+          </button>
           <div
             ref={initializePopover}
             className="d-inline-block"

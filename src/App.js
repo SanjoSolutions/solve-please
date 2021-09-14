@@ -4,6 +4,7 @@ import { Link, Route, Switch, useLocation } from 'react-router-dom'
 import { Auth } from './Auth.js'
 import { LogIn } from './LogIn.js'
 import { LogOut } from './LogOut.js'
+import { ProposeSolution } from './ProposeSolution.js'
 import { RequestSolution } from './RequestSolution.js'
 import { Search } from './Search.js'
 import { SolutionRequests } from './SolutionRequests.js'
@@ -100,6 +101,7 @@ function App() {
           </Route>
         </Switch>
       </div>
+      <ProposeSolution />
     </div>
   )
 }

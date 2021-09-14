@@ -1,37 +1,25 @@
-import { useState, useEffect } from 'react'
+import { useCallback } from 'react'
+import { isSolutionRequestWhichIncludesSearchTerm } from './isSolutionRequestWhichIncludesSearchTerm.js'
 import { getDatabase } from './unnamed/firebase/getDatabase.js'
+import { partial } from './unnamed/partial.js'
+import { useDocuments } from './unnamed/react/firebase/useDocuments.js'
 
 export function useSolutionRequests(searchTerm) {
-  const [requests, setRequests] = useState(null)
-
-  useEffect(
-    () => {
-      async function retrieveSolutionRequests() {
-        const database = getDatabase()
-        const solutionRequestsResult = await database
-          .collection('solutionRequests')
-          .get(
-            database.collection('solutionRequests')
-              .orderBy('numberOfRequesters', 'desc'),
-          )
-        let solutionRequests = solutionRequestsResult.docs
-        if (searchTerm) {
-          solutionRequests = solutionRequests.filter(
-            solutionRequest => {
-              const {summary, details} = solutionRequest.data()
-              return (
-                summary.includes(searchTerm) ||
-                details.includes(searchTerm)
-              )
-            }
-          )
-        }
-        setRequests(solutionRequests)
+  const database = getDatabase()
+  const queryRef = database
+    .collection('solutionRequests')
+    .orderBy('numberOfRequesters', 'desc')
+  const filterFn = useCallback(
+    (solutionRequests) => {
+      if (searchTerm) {
+        solutionRequests = solutionRequests.filter(
+          partial(isSolutionRequestWhichIncludesSearchTerm, searchTerm),
+        )
       }
-      retrieveSolutionRequests()
+      return solutionRequests
     },
-    [searchTerm]
+    [searchTerm],
   )
 
-  return requests
+  return useDocuments(queryRef, filterFn)
 }

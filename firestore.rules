@@ -29,6 +29,21 @@ service cloud.firestore {
       allow delete: if false;
     }
 
+    match /solutionRequests/{solutionRequestId}/solutionProposals/{solutionProposalId} {
+      allow create: if (
+        request.auth != null &&
+        request.resource.data.keys().hasOnly(
+          [
+            'solution'
+          ]
+        ) &&
+        request.resource.data.solution is string
+      );
+      allow read: if true;
+      allow update: if false;
+      allow delete: if false;
+    }
+
     match /users/{userId} {
       allow create: if (
         request.auth != null &&
