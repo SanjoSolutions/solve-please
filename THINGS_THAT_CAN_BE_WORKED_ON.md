@@ -13,7 +13,7 @@
 * [X] Disable "Submit request" button while the submission is in progress.
 * [X] Search function
 * [X] Propose solution functionality
-* [ ] Support the display of many solution requests
+* [X] Support the display of many solution requests
 * [ ] Support for search with many solution requests
 * [X] "Also looking for a solution for this problem" buttons seem first clickable before they become unclickable (as expected).
 * [ ] Logo

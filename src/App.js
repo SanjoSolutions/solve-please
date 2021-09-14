@@ -21,7 +21,7 @@ function App() {
     function (path) {
       return path === location.pathname
     },
-    [location]
+    [location],
   )
 
   const [isOpen, setIsOpen] = useState(false)
@@ -30,7 +30,7 @@ function App() {
     function () {
       setIsOpen(!isOpen)
     },
-    [isOpen]
+    [isOpen],
   )
 
   return (
@@ -46,13 +46,13 @@ function App() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"/>
+            <span className="navbar-toggler-icon" />
           </button>
           <div
             className={ classNames({
               'collapse': !isOpen,
               'show': isOpen,
-              'navbar-collapse': true
+              'navbar-collapse': true,
             }) }
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
@@ -61,7 +61,7 @@ function App() {
                   className={
                     classNames({
                       'nav-link': true,
-                      'active': isCurrentLocationPath('/')
+                      'active': isCurrentLocationPath('/'),
                     })
                   }
                   aria-current="page"
@@ -74,7 +74,7 @@ function App() {
                   className={
                     classNames({
                       'nav-link': true,
-                      'active': isCurrentLocationPath('/request-solution')
+                      'active': isCurrentLocationPath('/request-solution'),
                     })
                   }
                   to="/request-solution"
@@ -84,20 +84,20 @@ function App() {
               </li>
             </ul>
             <Search />
-            {isInitializing ? null : (user ? <LogOut /> : <LogIn />)}
+            { isInitializing ? null : (user ? <LogOut /> : <LogIn />) }
           </div>
         </div>
       </nav>
       <div className="container flex-grow-1 d-flex flex-column">
         <Switch>
           <Route exact path="/">
-            <SolutionRequests/>
+            <SolutionRequests />
           </Route>
           <Route exact path="/log-in">
-            <Auth/>
+            <Auth />
           </Route>
           <Route exact path="/request-solution">
-            <RequestSolution/>
+            <RequestSolution />
           </Route>
         </Switch>
       </div>
