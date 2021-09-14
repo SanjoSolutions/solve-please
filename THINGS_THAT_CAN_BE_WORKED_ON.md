@@ -9,7 +9,7 @@
       even though the user has already clicked it before.
 * [X] Fix navigation menu on mobile
 * [X] Log out
-* ~~[ ] Show currently logged in user~~
+* ~~[ ] Show currently logged in user~~ (The log out button seems to be already an indicator that the user is logged in.)
 * [X] Disable "Submit request" button while the submission is in progress.
 * [X] Search function
 * [ ] Propose solution functionality
