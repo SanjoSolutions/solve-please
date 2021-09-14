@@ -150,7 +150,7 @@ export function SolutionRequests() {
                     onClick={ onPrevious }
                     className="page-link"
                   >
-                    Previous
+                    Previous page
                   </button>
                 </li>
                 <li
@@ -166,7 +166,7 @@ export function SolutionRequests() {
                     onClick={ onNext }
                     className="page-link"
                   >
-                    Next
+                    Next page
                   </button>
                 </li>
               </ul>
