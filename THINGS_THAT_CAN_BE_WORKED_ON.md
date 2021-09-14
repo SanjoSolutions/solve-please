@@ -19,3 +19,4 @@
 * [ ] Logo
 * [X] Permalink to solution request
 * [ ] Make sure that long summary text works in the UI.
+* [ ] Length constraint for summary and details text?
