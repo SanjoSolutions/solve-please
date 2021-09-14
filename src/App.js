@@ -7,7 +7,7 @@ import { LogOut } from './LogOut.js'
 import { RequestSolution } from './RequestSolution.js'
 import { Search } from './Search.js'
 import { SolutionRequests } from './SolutionRequests.js'
-import { useIsInitializing } from './useIsInitializing.js'
+import { useIsInitializing } from './unnamed/react/firebase/useIsInitializing.js'
 import { useUser } from './unnamed/react/firebase/useUser.js'
 
 function App() {

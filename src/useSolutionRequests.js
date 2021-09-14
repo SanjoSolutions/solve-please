@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getDatabase } from './firebase/getDatabase.js'
+import { getDatabase } from './unnamed/firebase/getDatabase.js'
 
 export function useSolutionRequests(searchTerm) {
   const [requests, setRequests] = useState(null)

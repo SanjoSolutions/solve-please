@@ -6,7 +6,7 @@ import {
 import './index.css'
 import App from './App'
 import { initializeApp } from './firebase/initializeApp.js'
-import { isDevelopment } from './isDevelopment.js'
+import { isDevelopment } from './unnamed/isDevelopment.js'
 import reportWebVitals from './reportWebVitals'
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'

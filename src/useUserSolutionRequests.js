@@ -1,7 +1,7 @@
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/firestore'
 import { useState, useEffect } from 'react'
-import { getDatabase } from './firebase/getDatabase.js'
+import { getDatabase } from './unnamed/firebase/getDatabase.js'
 
 export function useUserSolutionRequests() {
   const [userSolutionRequests, setUserSolutionRequests] = useState(null)

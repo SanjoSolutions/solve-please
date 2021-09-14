@@ -1,5 +1,5 @@
 import firebase from 'firebase/compat/app'
-import { getDatabase } from './getDatabase.js'
+import { getDatabase } from '../unnamed/firebase/getDatabase.js'
 
 export async function addSolutionRequestToUsersRequestedSolutions(solutionRequestId) {
   const database = getDatabase()

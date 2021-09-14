@@ -1,5 +1,5 @@
 import React from 'react'
-import { logOut } from './firebase/logOut.js'
+import { logOut } from './unnamed/firebase/logOut.js'
 
 export function LogOut() {
   return (

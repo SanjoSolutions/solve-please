@@ -1,9 +1,9 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { addSolutionRequestToUsersRequestedSolutions } from './firebase/addSolutionRequestToUsersRequestedSolutions.js'
-import { getDatabase } from './firebase/getDatabase.js'
+import { getDatabase } from './unnamed/firebase/getDatabase.js'
 import { initializeApp } from './firebase/initializeApp.js'
-import { useRequireLoggedIn } from './useRequireLoggedIn.js'
+import { useRequireLoggedIn } from './unnamed/react/firebase/useRequireLoggedIn.js'
 
 initializeApp()
 

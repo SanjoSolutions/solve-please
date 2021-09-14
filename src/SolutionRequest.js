@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { requestASolutionToo } from './domain/requestSolutionToo.js'
 import { addSolutionRequestToUsersRequestedSolutions } from './firebase/addSolutionRequestToUsersRequestedSolutions.js'
-import { getDatabase } from './firebase/getDatabase.js'
+import { getDatabase } from './unnamed/firebase/getDatabase.js'
 import { initializeApp } from './firebase/initializeApp.js'
 import './SolutionRequest.css'
 import { useIsLoggedIn } from './unnamed/react/firebase/useIsLoggedIn.js'

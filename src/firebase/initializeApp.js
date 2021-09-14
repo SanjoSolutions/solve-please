@@ -1,5 +1,4 @@
-import firebase from 'firebase/compat/app'
-import once from 'lodash.once'
+import { initializeApp as initializeAppBase } from '../unnamed/firebase/initializeApp.js'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCcWA6ATqEHbxfK3LfHpwvIukjdIKeUatM',
@@ -10,6 +9,6 @@ const firebaseConfig = {
   appId: '1:45732995708:web:85e6965b6be8b37877dff9',
 }
 
-export const initializeApp = once(function initializeApp() {
-  firebase.initializeApp(firebaseConfig)
-})
+export function initializeApp() {
+  initializeAppBase(firebaseConfig)
+}
