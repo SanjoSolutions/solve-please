@@ -19,7 +19,6 @@ export function SolutionRequests() {
   useEffect(
     function retrieveInitialPage() {
       async function retrieve() {
-        console.log('A')
         const queryRef = generateQueryRef(
           {
             limit: itemsPerPage,
