@@ -55,6 +55,18 @@ export function Search() {
     [updateQueryString],
   )
 
+  const onClick = useCallback(
+    (event) => {
+      event.preventDefault()
+      if (inputRef.current && isSearchEventSupported(inputRef.current)) {
+        updateQueryString()
+      }
+    },
+    [
+      updateQueryString
+    ]
+  )
+
   const onInputAttached = useCallback(
     (node) => {
       inputRef.current = node
@@ -79,7 +91,13 @@ export function Search() {
         aria-label="Search"
         defaultValue={ searchTerm }
       />
-      <button className="btn btn-outline-dark" type="submit">Search</button>
+      <button
+        onClick={ onClick }
+        className="btn btn-outline-dark"
+        type="submit"
+      >
+        Search
+      </button>
     </form>
   )
 }
