@@ -13,6 +13,20 @@
           "order": "DESCENDING"
         }
       ]
+    },
+    {
+      "collectionGroup": "solutionRequests",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "summaryAndDetailsWords",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "numberOfRequesters",
+          "order": "ASCENDING"
+        }
+      ]
     }
   ],
   "fieldOverrides": [
@@ -33,6 +47,10 @@
         {
           "queryScope": "COLLECTION",
           "order": "DESCENDING"
+        },
+        {
+          "queryScope": "COLLECTION",
+          "order": "ASCENDING"
         }
       ]
     },
