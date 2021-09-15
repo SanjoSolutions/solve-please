@@ -1,11 +1,11 @@
 import { useMemo } from 'react'
 import { getSolutionProposalsCollection } from './getSolutionProposalsCollection.js'
-import { useDocuments } from './unnamed/react/firebase/useDocuments.js'
+import { useDocumentSnapshot } from './unnamed/react/firebase/useDocumentSnapshots.js'
 
 export function useSolutionProposals(solutionRequestId) {
   const queryRef = useMemo(
     () => getSolutionProposalsCollection(solutionRequestId),
-    [solutionRequestId]
+    [solutionRequestId],
   )
-  return useDocuments(queryRef)
+  return useDocumentSnapshot(queryRef)
 }

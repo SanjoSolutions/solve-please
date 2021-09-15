@@ -22,5 +22,5 @@
 * [X] Length constraint for summary (400 characters maximum) and details (700 characters maximum) text?
 * [X] When opening "http://localhost:3000/request-solution" it seems to redirect to "http://localhost:3000/log-in" 
       even though the user seems to be logged in.
-* [ ] Show proposed solution in solution request card after it has been submitted.
+* [X] Show proposed solution in solution request card after it has been submitted.
 * [ ] Add support contact to app website (for support cases).
