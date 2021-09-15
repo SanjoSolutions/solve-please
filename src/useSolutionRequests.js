@@ -46,7 +46,7 @@ export function generateQueryRef({
       searchTerms.split(' ').slice(0, 10),
     )
   }
-  queryRef.orderBy('numberOfRequesters', 'desc')
+  queryRef = queryRef.orderBy('numberOfRequesters', 'desc')
   if (startAfter) {
     queryRef = queryRef.startAfter(startAfter)
   }
