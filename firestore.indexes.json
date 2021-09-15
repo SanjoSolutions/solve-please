@@ -34,7 +34,12 @@
     {
       "collectionGroup": "solutionRequests",
       "fieldPath": "summaryAndDetailsWords",
-      "indexes": []
+      "indexes": [
+        {
+          "queryScope": "COLLECTION",
+          "arrayConfig": "CONTAINS"
+        }
+      ]
     }
   ]
 }
