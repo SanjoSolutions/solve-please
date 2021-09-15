@@ -39,7 +39,6 @@ export function generateQueryRef({
   const database = getDatabase()
   let queryRef = database
     .collection('solutionRequests')
-    .orderBy('numberOfRequesters', 'desc')
   if (searchTerms) {
     queryRef = queryRef.where(
       'summaryAndDetailsWords',
@@ -47,6 +46,7 @@ export function generateQueryRef({
       searchTerms.split(' ').slice(0, 10),
     )
   }
+  queryRef.orderBy('numberOfRequesters', 'desc')
   if (startAfter) {
     queryRef = queryRef.startAfter(startAfter)
   }
