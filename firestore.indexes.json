@@ -58,6 +58,16 @@
       "collectionGroup": "solutionRequests",
       "fieldPath": "summaryAndDetailsWords",
       "indexes": []
+    },
+    {
+      "collectionGroup": "solutionProposals",
+      "fieldPath": "solution",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "users",
+      "fieldPath": "solutionRequests",
+      "indexes": []
     }
   ]
 }
