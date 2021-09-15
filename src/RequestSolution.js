@@ -26,7 +26,7 @@ export function RequestSolution() {
       const summary = $summary.value
       const details = $details.value
       const database = getDatabase()
-      const requestRef = await database.collection('solutionRequests').add({
+      const solutionRequestRef = await database.collection('solutionRequests').add({
         summary,
         details,
         numberOfRequesters: 1,
@@ -34,7 +34,7 @@ export function RequestSolution() {
           extractWords(summary).concat(extractWords(details))
         )
       })
-      await addSolutionRequestToUsersRequestedSolutions(requestRef.id)
+      await addSolutionRequestToUsersRequestedSolutions(solutionRequestRef.id)
       setIsSubmitting(false)
       history.push('/')
     },

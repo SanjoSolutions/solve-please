@@ -5,9 +5,14 @@ export async function addSolutionRequestToUsersRequestedSolutions(solutionReques
   const database = getDatabase()
   const userId = firebase.auth().currentUser?.uid
   if (userId) {
-    const requestsRef = database
-      .collection('users').doc(userId)
-      .collection('solutionRequests')
-    await requestsRef.doc(solutionRequestId).set({})
+    const userRef = database.collection('users').doc(userId)
+    await userRef.set(
+      {
+        solutionRequests: firebase.firestore.FieldValue.arrayUnion(solutionRequestId)
+      },
+      {
+        merge: true
+      }
+    )
   }
 }

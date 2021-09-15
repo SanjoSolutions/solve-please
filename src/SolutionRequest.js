@@ -8,8 +8,8 @@ import { getDatabase } from './unnamed/firebase/getDatabase.js'
 import { initializeApp } from './firebase/initializeApp.js'
 import './SolutionRequest.scss'
 import { useIsLoggedIn } from './unnamed/react/firebase/useIsLoggedIn.js'
+import { useUserDocument } from './unnamed/react/firebase/useUserDocument.js'
 import { useSolutionProposals } from './useSolutionProposals.js'
-import { useUserSolutionRequests } from './useUserSolutionRequests.js'
 
 /* global bootstrap */
 
@@ -47,11 +47,9 @@ export function SolutionRequest({ solutionRequest, link }) {
     requestData.numberOfRequesters,
   )
 
-  const userSolutionRequests = useUserSolutionRequests()
-  const userSolutionRequestIds = userSolutionRequests ?
-    new Set(
-      userSolutionRequests.map(userSolutionRequest => userSolutionRequest.id),
-    ) :
+  const userDocument = useUserDocument()
+  const userSolutionRequestIds = userDocument ?
+    new Set(userDocument.data().solutionRequests) :
     null
   const [
     isAlsoLookingForASolutionForThisProblemRequestInProgress,

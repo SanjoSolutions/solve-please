@@ -49,27 +49,18 @@ service cloud.firestore {
     }
 
     match /users/{userId} {
-      allow create: if (
+      allow create, update: if (
         request.auth != null &&
-        request.resource.data.keys().hasOnly([])
+        request.auth.uid == userId &&
+        request.resource.data.keys().hasOnly([
+          'solutionRequests'
+        ])
       );
       allow read: if (
         request.auth != null &&
         request.auth.uid == userId
       );
-      allow update, delete: if false;
-    }
-
-    match /users/{userId}/solutionRequests/{solutionRequestId} {
-      allow create, update: if (
-        request.auth != null &&
-        request.auth.uid == userId &&
-        request.resource.data.keys().hasOnly([])
-      );
-      allow read, delete: if (
-        request.auth != null &&
-        request.auth.uid == userId
-      );
+      allow delete: if false;
     }
   }
 }
