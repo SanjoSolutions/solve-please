@@ -29,7 +29,12 @@
     {
       "collectionGroup": "solutionRequests",
       "fieldPath": "numberOfRequesters",
-      "indexes": []
+      "indexes": [
+        {
+          "queryScope": "COLLECTION",
+          "order": "DESCENDING"
+        }
+      ]
     },
     {
       "collectionGroup": "solutionRequests",
