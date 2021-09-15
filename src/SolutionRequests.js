@@ -16,9 +16,19 @@ export function SolutionRequests() {
   const [nextSolutionRequests, setNextSolutionRequests] = useState(null)
 
   useEffect(
+    function resetSolutionRequests() {
+      setPreviousSolutionRequests(null)
+      setSolutionRequests(null)
+      setNextSolutionRequests(null)
+    },
+    [
+      searchTerms
+    ]
+  )
+
+  useEffect(
     function retrieveDisplayedPage() {
       async function retrieve() {
-        setSolutionRequests(null)
         const queryRef = generateQueryRef(
           {
             searchTerms,
