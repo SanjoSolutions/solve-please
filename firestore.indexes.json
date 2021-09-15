@@ -1,4 +1,40 @@
 {
-  "indexes": [],
-  "fieldOverrides": []
+  "indexes": [
+    {
+      "collectionGroup": "solutionRequests",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "summaryAndDetailsWords",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "numberOfRequesters",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": [
+    {
+      "collectionGroup": "solutionRequests",
+      "fieldPath": "summary",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "solutionRequests",
+      "fieldPath": "details",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "solutionRequests",
+      "fieldPath": "numberOfRequesters",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "solutionRequests",
+      "fieldPath": "summaryAndDetailsWords",
+      "indexes": []
+    }
+  ]
 }
