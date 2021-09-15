@@ -2,7 +2,6 @@ import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'
 import * as firebaseui from 'firebaseui'
 import React, { useCallback } from 'react'
-import './Auth.css'
 import { useHistory } from 'react-router-dom'
 
 export function Auth() {
@@ -39,6 +38,9 @@ export function Auth() {
 
 
   return (
-    <div className="auth" ref={onRendered} />
+    <div
+      className="flex-grow-1 d-flex flex-column align-items-center justify-content-center"
+      ref={onRendered}
+    />
   )
 }
