@@ -52,9 +52,11 @@ service cloud.firestore {
       allow create, update: if (
         request.auth != null &&
         request.auth.uid == userId &&
-        request.resource.data.keys().hasOnly([
-          'solutionRequests'
-        ])
+        request.resource.data.keys().hasOnly(
+          [
+            'solutionRequests'
+          ]
+        )
       );
       allow read: if (
         request.auth != null &&
