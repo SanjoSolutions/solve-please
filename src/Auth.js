@@ -29,9 +29,7 @@ export function Auth() {
             {
               provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
               requireDisplayName: false,
-            },
-            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-            firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+            }
           ],
         })
       }
