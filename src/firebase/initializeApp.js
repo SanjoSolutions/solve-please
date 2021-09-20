@@ -1,4 +1,4 @@
-import { initializeApp as initializeAppBase } from '../unnamed/firebase/initializeApp.js'
+import { initializeApp as initializeAppBase } from '../unnamed/firebase/compat/initializeApp.js'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCcWA6ATqEHbxfK3LfHpwvIukjdIKeUatM',

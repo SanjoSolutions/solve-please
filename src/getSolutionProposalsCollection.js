@@ -1,4 +1,4 @@
-import { getDatabase } from './unnamed/firebase/getDatabase.js'
+import { getDatabase } from './unnamed/firebase/compat/getDatabase.js'
 
 export function getSolutionProposalsCollection(solutionRequestId) {
   const database = getDatabase()

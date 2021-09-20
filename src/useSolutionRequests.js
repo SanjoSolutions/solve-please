@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { getDatabase } from './unnamed/firebase/getDatabase.js'
+import { getDatabase } from './unnamed/firebase/compat/getDatabase.js'
 import { useDocuments } from './unnamed/react/firebase/useDocuments.js'
 
 export function useSolutionRequests({

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { SolutionRequest } from './SolutionRequest.js'
 import { Spinner } from './Spinner.js'
-import { getDatabase } from './unnamed/firebase/getDatabase.js'
+import { getDatabase } from './unnamed/firebase/compat/getDatabase.js'
 
 export function SolutionRequestPage() {
   const [solutionRequest, setSolutionRequest] = useState(null)
