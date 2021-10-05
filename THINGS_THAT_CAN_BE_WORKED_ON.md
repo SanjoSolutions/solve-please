@@ -26,3 +26,4 @@
 * [ ] Add support contact to app website (for support cases).
 * [ ] When going to "Request a solution" the request form seemed to display very shortly, before the login form appeared.
 * [ ] Screen for "0 results".
+* [ ] Option to receive an email when a solution has been proposed for a problem that has been requested to be solved.
