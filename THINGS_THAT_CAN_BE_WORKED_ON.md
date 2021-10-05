@@ -24,3 +24,4 @@
       even though the user seems to be logged in.
 * [X] Show proposed solution in solution request card after it has been submitted.
 * [ ] Add support contact to app website (for support cases).
+* [ ] When going to "Request a solution" the request form seemed to display very shortly, before the login form appeared.
