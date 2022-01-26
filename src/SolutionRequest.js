@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { requestASolutionToo } from './domain/requestSolutionToo.js'
+import { requestSolutionToo } from './domain/requestSolutionToo.js'
 import { addSolutionRequestToUsersRequestedSolutions } from './firebase/addSolutionRequestToUsersRequestedSolutions.js'
 import { getProposeSolutionModal } from './getProposeSolutionModal.js'
 import { SolutionProposals } from './SolutionProposals.js'
@@ -60,7 +60,7 @@ export function SolutionRequest({ solutionRequest, link }) {
     async function onAlsoLookingForASolutionForThisProblem(event) {
       event.preventDefault()
       setIsAlsoLookingForASolutionForThisProblemRequestInProgress(true)
-      const newNumberOfRequesters = requestASolutionToo(numberOfRequesters)
+      const newNumberOfRequesters = requestSolutionToo(numberOfRequesters)
       setNumberOfRequesters(newNumberOfRequesters)
 
       const solutionRequestReference = database
@@ -73,7 +73,7 @@ export function SolutionRequest({ solutionRequest, link }) {
             if (solutionRequest.exists) {
               await addSolutionRequestToUsersRequestedSolutions(solutionRequest.id)
 
-              const newNumberOfRequesters2 = requestASolutionToo(
+              const newNumberOfRequesters2 = requestSolutionToo(
                 solutionRequest.data().numberOfRequesters ?? 0,
               )
               transaction.update(

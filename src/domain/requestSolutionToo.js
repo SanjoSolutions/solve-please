@@ -1,3 +1,3 @@
-export function requestASolutionToo(numberOfRequestsForASolution) {
+export function requestSolutionToo(numberOfRequestsForASolution) {
   return numberOfRequestsForASolution + 1
 }
